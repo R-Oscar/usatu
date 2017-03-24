@@ -20,7 +20,7 @@ $(document).ready(function() {
   				success: function(response) {
   					if (response === '1') {
 	  					$('#js-signup').modal('hide');
-  						alert('Регистрация завершена. Теперь Ваш аккаунт должен быть активирован администратором');
+  						alert('пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ. пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ');
   						return;					
   					}
   					alert(response);
@@ -38,7 +38,7 @@ $(document).ready(function() {
 				url: 'handlers/auth.php',
 				data: $(this).serialize(),
 				success: function(response) {
-					console.log('ok');
+					location.reload();
 				}
 			});
 		}

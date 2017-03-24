@@ -1,3 +1,7 @@
+<?php 
+require_once('functions.php'); 
+?>
+
 <!DOCTYPE html>
 <html lang="ru">
 <head>
@@ -26,8 +30,16 @@
 			</ul>
 
 			<ul class="nav navbar-nav navbar-right">
-				<li><a href="#" data-toggle="modal" data-target="#js-auth">Авторизация</a></li>
-				<li><a href="#" data-toggle="modal" data-target="#js-signup">Регистрация</a></li>
+						<?php
+							if (is_admin()) {
+									?> <li><a href="#">Привет!</a></li> <?php;
+							}else{
+								?>
+								<li><a href="#" data-toggle="modal" data-target="#js-auth">Авторизация</a></li>
+								<li><a href="#" data-toggle="modal" data-target="#js-signup">Регистрация</a></li>
+								<?php;
+							}
+						?>
 			</ul>
 		</div>
 <!-- 		<div class="image-container">

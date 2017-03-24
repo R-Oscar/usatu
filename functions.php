@@ -17,4 +17,8 @@
 
 		return $link;
 	}
+
+	function is_admin() {
+		return $_SESSION['type'] === 'tutor';
+	}
 ?>
