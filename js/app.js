@@ -20,7 +20,7 @@ $(document).ready(function() {
   				success: function(response) {
   					if (response === '1') {
 	  					$('#js-signup').modal('hide');
-  						alert('����������� ���������. ������ ��� ������� ������ ���� ����������� ���������������');
+  						alert('Регистрация завершена. Теперь Ваш аккаунт должен быть активирован администратором');
   						return;					
   					}
   					alert(response);

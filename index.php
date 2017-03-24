@@ -1,5 +1,6 @@
 <?php 
-require_once('functions.php'); 
+require_once('functions.php');
+session_start();
 ?>
 
 <!DOCTYPE html>
@@ -31,13 +32,11 @@ require_once('functions.php');
 
 			<ul class="nav navbar-nav navbar-right">
 						<?php
-							if (is_admin()) {
-									?> <li><a href="#">Привет!</a></li> <?php;
-							}else{
-								?>
-								<li><a href="#" data-toggle="modal" data-target="#js-auth">Авторизация</a></li>
-								<li><a href="#" data-toggle="modal" data-target="#js-signup">Регистрация</a></li>
-								<?php;
+							if (is_tutor()) {
+								echo '<li><a href="#">Привет!</a></li>';
+							} else {
+								echo '<li><a href="#" data-toggle="modal" data-target="#js-auth">Авторизация</a></li>
+									<li><a href="#" data-toggle="modal" data-target="#js-signup">Регистрация</a></li>';
 							}
 						?>
 			</ul>
