@@ -77,7 +77,7 @@ $index = 0;
                         <?php foreach($groups as $result) {?>
                             <tr>
                                 <td><?php echo $index; ?></td>
-                                <td><?php echo $result['name']; ?></td>
+                                <td><?php echo iconv('utf-8', 'windows-1251', $result['name']); ?></td>
                             </tr>
                             <?php $index++;}?>
                     </tbody>
@@ -105,8 +105,8 @@ $index = 0;
         <?php if (is_student() || $accessed) {?>
             <?php foreach($group_news as $news_item) {?>
                 <article class="group-news-item">
-                    <h4><?php echo $news_item['title']; ?></h4>
-                    <p><?php echo $news_item['context']; ?></p>
+                    <h4><?php echo iconv('utf-8', 'windows-1251', $news_item['title']); ?></h4>
+                    <p><?php echo iconv('utf-8', 'windows-1251',$news_item['context']); ?></p>
                 </article>
             <?php } ?>
         <?php } ?>
@@ -130,7 +130,7 @@ $index = 0;
 	      	  	    <label for="group_id">Выберите группу</label>
 	      	  	    <select class="form-control" id="group_id" name="group_id">
                         <?php foreach($groups as $group) {?>
-	      	  	        <option value="<?php echo $group['id']; ?>"><?php echo $group['name']; ?></option>
+	      	  	        <option value="<?php echo $group['id']; ?>"><?php echo iconv('utf-8', 'windows-1251',$group['name']); ?></option>
                         <?php } ?>
 	      	  	    </select>
 	      	    </div>

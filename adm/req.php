@@ -8,7 +8,7 @@
 <html lang="ru">
 <head>
 	<meta charset="windows-1251">
-	<title>Управление заявками</title>
+	<title>РЈРїСЂР°РІР»РµРЅРёРµ Р·Р°СЏРІРєР°РјРё</title>
 	<link rel="stylesheet" href="../css/bootstrap.min.css">
 	<link rel="stylesheet" href="../fonts/stylesheet.css">
 	<!-- <link rel="stylesheet" href="css/bootstrap-theme.min.css"> -->
@@ -23,14 +23,14 @@
 				</a>
 			</div>
 			<ul class="nav navbar-nav">
-				<li><a href="../">Главная</a></li>
-				<li><a href="#">О кафедре</a></li>
-				<li><a href="#">Расписание</a></li>
-				<li><a href="#">Преподаватели</a></li>
-				<li class="active"><a href="#">Группы</a></li>
+				<li><a href="../">Р“Р»Р°РІРЅР°СЏ</a></li>
+				<li><a href="#">Рћ РєР°С„РµРґСЂРµ</a></li>
+				<li><a href="#">Р Р°СЃРїРёСЃР°РЅРёРµ</a></li>
+				<li><a href="#">РџСЂРµРїРѕРґР°РІР°С‚РµР»Рё</a></li>
+				<li class="active"><a href="#">Р“СЂСѓРїРїС‹</a></li>
 				<?php
 					if (is_moder()) {
-						echo '<li><a href="adm/req.php">Заявки</a></li>';
+						echo '<li><a href="adm/req.php">Р—Р°СЏРІРєРё</a></li>';
 					}
 				?>
 			</ul>
@@ -41,16 +41,16 @@
 	</nav>
 	
 	<section>
-		<h1>Студенты</h1>
+		<h1>РЎС‚СѓРґРµРЅС‚С‹</h1>
 		<table class="table table-bordered" id="students">
 		   <thead>
 		     <tr>
 		       <th>Email</th>
-		       <th>Имя</th>
-		       <th>Фамилия</th>
-		       <th>Отчество</th>
-		       <th>Группа</th>
-		       <th>Действия</th>
+		       <th>РРјСЏ</th>
+		       <th>Р¤Р°РјРёР»РёСЏ</th>
+		       <th>РћС‚С‡РµСЃС‚РІРѕ</th>
+		       <th>Р“СЂСѓРїРїР°</th>
+		       <th>Р”РµР№СЃС‚РІРёСЏ</th>
 		     </tr>
 		   </thead>
 		   <tbody>
@@ -58,7 +58,7 @@
 			   	$link = connector();
 
 			   	if (!$link) {
-			   		echo 'Ошибка соединения с БД';
+			   		echo 'РћС€РёР±РєР° СЃРѕРµРґРёРЅРµРЅРёСЏ СЃ Р‘Р”';
 			   		exit();
 			   	}
 
@@ -74,8 +74,8 @@
 			   				<td>'.iconv('utf-8', 'windows-1251', $row['patronym']).'</td>
 			   				<td>'.iconv('utf-8', 'windows-1251', $row['sgroup']).'</td>
 			   				<td>
-			   					<button class="accept" data-id="'.iconv('utf-8', 'windows-1251', $row['id']).'">Принять</button>
-			   					<button class="reject" data-id="'.iconv('utf-8', 'windows-1251', $row['id']).'">Отклонить</button>
+			   					<button class="accept" data-id="'.iconv('utf-8', 'windows-1251', $row['id']).'">РџСЂРёРЅСЏС‚СЊ</button>
+			   					<button class="reject" data-id="'.iconv('utf-8', 'windows-1251', $row['id']).'">РћС‚РєР»РѕРЅРёС‚СЊ</button>
 			   				</td>
 			   			</tr>';
 			   	}
@@ -87,16 +87,16 @@
 	</section>
 
 	<section>
-		<h1>Преподаватели</h1>
+		<h1>РџСЂРµРїРѕРґР°РІР°С‚РµР»Рё</h1>
 		<table class="table table-bordered" id="tutors">
 		   <thead>
 		     <tr>
 		       <th>Email</th>
-		       <th>Имя</th>
-		       <th>Фамилия</th>
-		       <th>Отчество</th>
-		       <th>Степень</th>
-		       <th>Действия</th>
+		       <th>РРјСЏ</th>
+		       <th>Р¤Р°РјРёР»РёСЏ</th>
+		       <th>РћС‚С‡РµСЃС‚РІРѕ</th>
+		       <th>РЎС‚РµРїРµРЅСЊ</th>
+		       <th>Р”РµР№СЃС‚РІРёСЏ</th>
 		     </tr>
 		   </thead>
 		   <tbody>
@@ -104,7 +104,7 @@
 			   	$link = connector();
 
 			   	if (!$link) {
-			   		echo 'Ошибка соединения с БД';
+			   		echo 'РћС€РёР±РєР° СЃРѕРµРґРёРЅРµРЅРёСЏ СЃ Р‘Р”';
 			   		exit();
 			   	}
 
@@ -119,8 +119,8 @@
 			   				<td>'.iconv('utf-8', 'windows-1251', $row['patronym']).'</td>
 			   				<td>'.iconv('utf-8', 'windows-1251', $row['degree']).'</td>
 			   				<td>
-			   					<button class="accept" data-id="'.iconv('utf-8', 'windows-1251', $row['id']).'">Принять</button>
-			   					<button class="reject" data-id="'.iconv('utf-8', 'windows-1251', $row['id']).'">Отклонить</button>
+			   					<button class="accept" data-id="'.iconv('utf-8', 'windows-1251', $row['id']).'">РџСЂРёРЅСЏС‚СЊ</button>
+			   					<button class="reject" data-id="'.iconv('utf-8', 'windows-1251', $row['id']).'">РћС‚РєР»РѕРЅРёС‚СЊ</button>
 			   				</td>
 			   			</tr>';
 			   	}
