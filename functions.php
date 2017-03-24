@@ -19,7 +19,7 @@
 	}
 
 	function is_admin() {
-		return $_SESSION['type'] = 'adm'
+		return $_SESSION['type'] == 'adm';
 	}
 
 	function is_moder() {
