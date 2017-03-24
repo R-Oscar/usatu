@@ -193,3 +193,17 @@ body {
 
     padding: 15px 0;
 }
+
+/* groups / news */
+.group-news-item{
+    display: inline-block;
+    padding: 10px 30px;
+    background-color: #f7f7f7;
+    border-radius: 10px;
+}
+
+.group-news-item h4{
+    font-weight: bold;
+    font-size: 20px;
+    text-transform: uppercase;
+}

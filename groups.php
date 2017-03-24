@@ -6,6 +6,7 @@ if (!is_logged()){
 } else {
     $my_group = get_my_group();
     $students = get_students($my_group);
+    $group_news = get_group_news($my_group);
 }
 $index = 0;
 ?>
@@ -93,6 +94,16 @@ $index = 0;
                 <?php } ?>
                     </tbody>
                 </table>
+        </div>
+        <div class="row">
+        <?php if (is_logged()) {?>
+            <?php foreach($group_news as $news_item) {?>
+                <article class="group-news-item">
+                    <h4><?php echo $news_item['title']; ?></h4>
+                    <p><?php echo $news_item['context']; ?></p>
+                </article>
+            <?php } ?>
+        <?php } ?>
         </div>
     </div>
 
