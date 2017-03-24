@@ -23,10 +23,10 @@
 	$query = '';
 	switch ($validated['type']) {
 		case 'tutor':
-			$query = "SELECT access, email FROM staff WHERE email = '$email' and pwd = '$pwd'";
+			$query = "SELECT access, email FROM staff WHERE email = '$email' and pwd = '$pwd' and authorized='1'";
 		break;
 		case 'student':
-			$query = "SELECT access, email FROM students WHERE email = '$email' and pwd = '$pwd'";
+			$query = "SELECT access, email FROM students WHERE email = '$email' and pwd = '$pwd' and authorized='1'";
 		break;
 	}
 	$res = mysql_query($query);

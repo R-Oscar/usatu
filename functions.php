@@ -44,7 +44,7 @@
 		$res = mysql_query($query);
 		$array = array();
 		while(($row = mysql_fetch_assoc($res))) {
-    		array_push($array, $row['name']);
+    		array_push($array, iconv('utf-8', 'windows-1251', $row['name']));
 		}
 		return $array;
 	}

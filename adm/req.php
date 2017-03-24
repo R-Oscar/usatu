@@ -23,7 +23,7 @@
 				</a>
 			</div>
 			<ul class="nav navbar-nav">
-				<li><a href="#">Главная</a></li>
+				<li><a href="../">Главная</a></li>
 				<li><a href="#">О кафедре</a></li>
 				<li><a href="#">Расписание</a></li>
 				<li><a href="#">Преподаватели</a></li>

@@ -88,7 +88,7 @@ $index = 0;
                         <?php foreach($students as $result) {?>
                             <tr>
                                 <td><?php echo $index; ?></td>
-                                <td><?php echo $result['fname'] . ' ' . $result['lname']; ?></td>
+                                <td><?php echo iconv('utf-8', 'windows-1251', $result['fname'] . ' ' . $result['lname']); ?></td>
                             </tr>
                             <?php $index++;}?>
                 <?php } ?>

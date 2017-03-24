@@ -28,7 +28,7 @@ session_start();
 				<li><a href="#">Преподаватели</a></li>
 				<li><a href="groups.php">Группы</a></li>
 				<?php
-					if (is_moder()) {
+					if (is_moder() || is_admin()) {
 						echo '<li><a href="adm/req.php">Заявки</a></li>';
 					}
 				?>
@@ -36,7 +36,7 @@ session_start();
 
 			<ul class="nav navbar-nav navbar-right">
 						<?php
-							if (is_tutor()) {
+							if (is_logged()) {
 								echo '<li><p>Привет!</p></li>';
 								echo '<li><a id="logout">Выйти</a>';
 							} else {
