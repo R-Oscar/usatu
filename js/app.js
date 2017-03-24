@@ -67,7 +67,8 @@ $(document).ready(function() {
 	});
 
 	//logout
-	$('#logout').click(function(){
+	$('#logout').click(function(event){
+		event.preventDefault();
 		$.ajax.bind(this)({
 				type: 'GET',
 				url: 'handlers/logout.php',
