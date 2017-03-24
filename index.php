@@ -162,12 +162,12 @@
 	      	  </div>
 	      	  <div class="form-group">
 	      	  	<label for="inputPassword" class="control-label">Пароль</label>
-	      	  	<input type="password" data-minlength="6" name="pwd" class="form-control" id="inputPassword" placeholder="Password" required>
+	      	  	<input type="password" data-minlength="6" name="pwd" class="form-control" id="inputPasswordR" placeholder="Password" required>
 	      	  	<div class="help-block">Минимум 6 символов</div>
 	      	  </div>
 	      	  <div class="form-group">
 	      	  	<label for="inputPasswordConfirm" class="control-label">Подтверждение пароля</label>
-	      	  	<input type="password" class="form-control" id="inputPasswordConfirm" data-match="#inputPassword" data-match-error="Пароли не совпадают" placeholder="Confirm" required>
+	      	  	<input type="password" class="form-control" id="inputPasswordConfirm" data-match="#inputPasswordR" data-match-error="Пароли не совпадают" placeholder="Confirm" required>
 	      	  	<div class="help-block with-errors"></div>
 	      	  </div>
 	      	  <div class="form-group">
