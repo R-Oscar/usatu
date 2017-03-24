@@ -18,8 +18,20 @@
 		return $link;
 	}
 
+	function is_admin() {
+		return $_SESSION['type'] = 'adm'
+	}
+
+	function is_moder() {
+		return $_SESSION['type'] == 'mod';
+	}
+
 	function is_tutor() {
-		return $_SESSION['type'] == 'tutor';
+		return $_SESSION['type'] == 'tut';
+	}
+
+	function is_student() {
+		return $_SESSION['type'] == 'std';
 	}
 
 	function is_logged() {
