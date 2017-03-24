@@ -181,3 +181,15 @@ body {
 	color: #fff;
 	background-color: #ffcc00;
 }
+
+.navbar-default .navbar-nav>li>p {
+    text-transform: uppercase;
+    font-weight: bold;
+    color: #eee;
+
+    margin-top: 45px;
+    margin-bottom: 45px;
+    line-height: 25px;
+
+    padding: 15px 0;
+}

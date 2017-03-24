@@ -33,7 +33,7 @@ session_start();
 			<ul class="nav navbar-nav navbar-right">
 						<?php
 							if (is_tutor()) {
-								echo '<li><a href="#">Привет!</a></li>';
+								echo '<li><p>Привет!</p></li>';
 							} else {
 								echo '<li><a href="#" data-toggle="modal" data-target="#js-auth">Авторизация</a></li>
 									<li><a href="#" data-toggle="modal" data-target="#js-signup">Регистрация</a></li>';
