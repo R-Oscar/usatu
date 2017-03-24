@@ -65,7 +65,9 @@
 		$email = $_SESSION['email'];
 		$query = "SELECT sgroup FROM `students` WHERE email = '$email'";
 		$res = mysql_query($query);
-		return mysql_fetch_assoc($res)['sgroup'];
+		$array = mysql_fetch_assoc($res);
+		if ($array) return $array['sgroup'];
+		return $array;
 	}
 
 	function get_group_news($group){
