@@ -22,11 +22,11 @@ session_start();
 				</a>
 			</div>
 			<ul class="nav navbar-nav">
-				<li class="active"><a href="#">Главная</a></li>
+				<li class="active"><a href="/">Главная</a></li>
 				<li><a href="#">О кафедре</a></li>
 				<li><a href="#">Расписание</a></li>
 				<li><a href="#">Преподаватели</a></li>
-				<li><a href="#">Группы</a></li>
+				<li><a href="groups.php">Группы</a></li>
 				<!-- <li><img src="images/logo.jpg" alt="Кафедра информатики" /></li> -->
 			</ul>
 
@@ -34,6 +34,7 @@ session_start();
 						<?php
 							if (is_tutor()) {
 								echo '<li><p>Привет!</p></li>';
+								echo '<li><a id="logout">Выйти</a>';
 							} else {
 								echo '<li><a href="#" data-toggle="modal" data-target="#js-auth">Авторизация</a></li>
 									<li><a href="#" data-toggle="modal" data-target="#js-signup">Регистрация</a></li>';

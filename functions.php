@@ -21,4 +21,38 @@
 	function is_tutor() {
 		return $_SESSION['type'] == 'tutor';
 	}
+
+	function is_logged() {
+		return strlen($_SESSION['email']) > 0;
+	}
+
+	function get_groups() {
+		$link = connector();
+		$query = 'SELECT name FROM `groups`';
+		$res = mysql_query($query);
+		$array = array();
+		while(($row = mysql_fetch_assoc($res))) {
+    		array_push($array, $row['name']);
+		}
+		return $array;
+	}
+
+	function get_students() {
+		$link = connector();
+		$query = 'SELECT * FROM `students`';
+		$res = mysql_query($query);
+		$array = array();
+		while(($row = mysql_fetch_assoc($res))) {
+    		array_push($array, $row);
+		}
+		return $array;
+	}
+
+	function get_my_group() {
+		$link = connector();
+		$query = 'SELECT * FROM `students`';
+		$res = mysql_query($query);
+		//
+		return true;
+	}
 ?>
