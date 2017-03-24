@@ -38,6 +38,9 @@ $(document).ready(function() {
 				url: 'handlers/auth.php',
 				data: $(this).serialize(),
 				success: function(response) {
+					if (response === '0') {
+						return alert('Ошибка авторизации');
+					}
 					location.reload();
 				}
 			});
