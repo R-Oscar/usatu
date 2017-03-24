@@ -40,11 +40,11 @@
 
 	function get_groups() {
 		$link = connector();
-		$query = 'SELECT name FROM `groups`';
+		$query = 'SELECT * FROM `groups`';
 		$res = mysql_query($query);
 		$array = array();
 		while(($row = mysql_fetch_assoc($res))) {
-    		array_push($array, iconv('utf-8', 'windows-1251', $row['name']));
+    		array_push($array, $row);
 		}
 		return $array;
 	}
@@ -72,7 +72,11 @@
 
 	function get_group_news($group){
 		$link = connector();
-		$query = "SELECT * FROM `group_news` WHERE group_id = '$group'";
+		if ($group == -1){
+			$query = "SELECT * FROM `group_news`";
+		} else {
+			$query = "SELECT * FROM `group_news` WHERE group_id = '$group'";
+		}
 		$res = mysql_query($query);
 		$array = array();
 		while(($row = mysql_fetch_assoc($res))) {
