@@ -23,17 +23,17 @@
 	$query = '';
 	switch ($validated['type']) {
 		case 'tutor':
-			$query = "SELECT access FROM staff WHERE email = '$email' and pwd = '$pwd'";
+			$query = "SELECT access, email FROM staff WHERE email = '$email' and pwd = '$pwd'";
 		break;
 		case 'student':
-			$query = "SELECT access FROM students WHERE email = '$email' and pwd = '$pwd'";
+			$query = "SELECT access, email FROM students WHERE email = '$email' and pwd = '$pwd'";
 		break;
 	}
 	$res = mysql_query($query);
-
 	while ($row = mysql_fetch_array($res, MYSQL_NUM)) {
 		session_start();
 		$_SESSION['type'] = $row[0];
+		$_SESSION['email'] = $row[1];
 		echo '1';
 		exit();
 	}

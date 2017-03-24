@@ -1,113 +1,113 @@
 <?php 
 require_once('functions.php');
 session_start();
+if (!is_logged()){
+    $groups = get_groups();
+} else {
+    $my_group = get_my_group();
+    $students = get_students($my_group);
+    $group_news = get_group_news($my_group);
+}
+$index = 0;
 ?>
 
 <!DOCTYPE html>
 <html lang="ru">
+
 <head>
-	<meta charset="windows-1251">
-	<title>Сайт кафедры информатики</title>
-	<link rel="stylesheet" href="css/bootstrap.min.css">
-	<link rel="stylesheet" href="fonts/stylesheet.css">
-	<!-- <link rel="stylesheet" href="css/bootstrap-theme.min.css"> -->
-	<link rel="stylesheet" href="css/style.css">
+    <meta charset="windows-1251">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="fonts/stylesheet.css">
+    <!-- <link rel="stylesheet" href="css/bootstrap-theme.min.css"> -->
+    <link rel="stylesheet" href="css/style.css">
 </head>
+
 <body>
-	<nav class="navbar navbar-default menu">
-		<div class="container">
-			<div class="navbar-header">
-				<a class="navbar-brand" href="/">
-					<img alt="Brand" src="images/logo_min.png">
-				</a>
-			</div>
-			<ul class="nav navbar-nav">
-				<li class="active"><a href="/">Главная</a></li>
-				<li><a href="#">О кафедре</a></li>
-				<li><a href="#">Расписание</a></li>
-				<li><a href="#">Преподаватели</a></li>
-				<li><a href="groups.php">Группы</a></li>
-				<?php
-					if (is_moder()) {
-						echo '<li><a href="adm/req.php">Заявки</a></li>';
+    <nav class="navbar navbar-default menu">
+        <div class="container">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="/">
+                    <img alt="Brand" src="images/logo_min.png">
+                </a>
+            </div>
+            <ul class="nav navbar-nav">
+                <li><a href="/">Главная</a></li>
+                <li><a href="#">О кафедре</a></li>
+                <li><a href="#">Расписание</a></li>
+                <li><a href="#">Преподаватели</a></li>
+                <li class="active"><a href="groups.php">Группы</a></li>
+                <!-- <li><img src="images/logo.jpg" alt="Кафедра информатики" /></li> -->
+            </ul>
+
+            <ul class="nav navbar-nav navbar-right">
+                <?php
+					if (is_logged()) {
+						echo '<li><p>Привет!</p></li>';
+                        echo '<li><a id="logout">Выйти</a>';
+					} else {
+						echo '<li><a href="#" data-toggle="modal" data-target="#js-auth">Авторизация</a></li>
+							<li><a href="#" data-toggle="modal" data-target="#js-signup">Регистрация</a></li>';
 					}
 				?>
-			</ul>
-
-			<ul class="nav navbar-nav navbar-right">
-						<?php
-							if (is_tutor()) {
-								echo '<li><p>Привет!</p></li>';
-								echo '<li><a id="logout">Выйти</a>';
-							} else {
-								echo '<li><a href="#" data-toggle="modal" data-target="#js-auth">Авторизация</a></li>
-									<li><a href="#" data-toggle="modal" data-target="#js-signup">Регистрация</a></li>';
-							}
-						?>
-			</ul>
-		</div>
-<!-- 		<div class="image-container">
+            </ul>
+        </div>
+        <!-- 		<div class="image-container">
 			<img src="images/logo_min.png" alt="Кафедра информатики">
 		</div> -->
-	</nav>
+    </nav>
 
-	<div class="carousel fade-carousel slide" data-ride="carousel" data-interval="4000" id="bs-carousel">
-	  <!-- Overlay -->
+    <div class="container">
+        <div class="row">
+            <?php if (!is_logged()) {?>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>№</th>
+                            <th>Группа</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php foreach($groups as $result) {?>
+                            <tr>
+                                <td><?php echo $index; ?></td>
+                                <td><?php echo $result; ?></td>
+                            </tr>
+                            <?php $index++;}?>
+                    </tbody>
+                </table>
+                <?php } else {?>
+                    <table class="table">
+                    <thead>
+                        <tr>
+                            <th>№</th>
+                            <th>Студент</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php foreach($students as $result) {?>
+                            <tr>
+                                <td><?php echo $index; ?></td>
+                                <td><?php echo $result['fname'] . ' ' . $result['lname']; ?></td>
+                            </tr>
+                            <?php $index++;}?>
+                <?php } ?>
+                    </tbody>
+                </table>
+        </div>
+        <div class="row">
+        <?php if (is_logged()) {?>
+            <?php foreach($group_news as $news_item) {?>
+                <article class="group-news-item">
+                    <h4><?php echo $news_item['title']; ?></h4>
+                    <p><?php echo $news_item['context']; ?></p>
+                </article>
+            <?php } ?>
+        <?php } ?>
+        </div>
+    </div>
 
-	  <!-- Indicators -->
-	  <ol class="carousel-indicators">
-	    <li data-target="#bs-carousel" data-slide-to="0" class="active"></li>
-	    <li data-target="#bs-carousel" data-slide-to="1"></li>
-	    <li data-target="#bs-carousel" data-slide-to="2"></li>
-	  </ol>
-	  
-	  <!-- Wrapper for slides -->
-	  <div class="carousel-inner">
-	    <div class="item slides active">
-	  	  <div class="overlay"></div>
-	      <div class="slide-1"></div>
-	      <div class="hero">
-	        <hgroup>
-	            <h1>Потому что УГАТУ</h1>        
-	            <h3>Выпускает хуету</h3>
-	        </hgroup>
-	        <button class="btn btn-hero btn-lg" role="button">See all features</button>
-	      </div>
-	    </div>
-	    <div class="item slides">
-	      <div class="overlay"></div>
-	      <div class="slide-2"></div>
-	      <div class="hero">        
-	        <hgroup>
-	            <h1>Потому что УГАТУ</h1>        
-	            <h3>Выпускает хуету</h3>
-	        </hgroup>       
-	        <button class="btn btn-hero btn-lg" role="button">See all features</button>
-	      </div>
-	    </div>
-	    <div class="item slides">
-	      <div class="overlay"></div>
-	      <div class="slide-3"></div>
-	      <div class="hero">        
-	        <hgroup>
-	            <h1>Потому что УГАТУ</h1>        
-	            <h3>Выпускает хуету</h3>
-	        </hgroup>
-	        <button class="btn btn-hero btn-lg" role="button">See all features</button>
-	      </div>
-	    </div>
-	  </div> 
-	</div>
-
-	<div class="container-fluid news">
-		<div class="container">
-			<div class="col-xs-4">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellat impedit nobis, beatae amet quas ad. Repudiandae nemo laborum cupiditate repellendus temporibus ullam ipsam, impedit, officiis atque suscipit dolore dolores labore! <a href="#">Читать дальше</a></div>
-			<div class="col-xs-4">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellat impedit nobis, beatae amet quas ad. Repudiandae nemo laborum cupiditate repellendus temporibus ullam ipsam, impedit, officiis atque suscipit dolore dolores labore! <a href="#">Читать дальше</a></div>
-			<div class="col-xs-4">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellat impedit nobis, beatae amet quas ad. Repudiandae nemo laborum cupiditate repellendus temporibus ullam ipsam, impedit, officiis atque suscipit dolore dolores labore! <a href="#">Читать дальше</a></div>
-		</div>
-	</div>
-
-	<!-- Авторизация -->
+    	<!-- Авторизация -->
 	<div class="modal fade" id="js-auth" tabindex="-1" role="dialog" aria-labelledby="js-auth">
 	  <div class="modal-dialog modal-sm" role="document">
 	    <div class="modal-content">
@@ -226,9 +226,10 @@ session_start();
 	  </div>
 	</div>
 
-	<script src="js/jquery-3.1.1.min.js"></script>
-	<script src="js/bootstrap.min.js"></script>
-	<script src="js/validator.min.js"></script>
-	<script src="js/app.js"></script>
+    <script src="js/jquery-3.1.1.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/validator.min.js"></script>
+    <script src="js/app.js"></script>
 </body>
+
 </html>

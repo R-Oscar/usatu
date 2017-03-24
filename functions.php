@@ -33,4 +33,49 @@
 	function is_student() {
 		return $_SESSION['type'] == 'std';
 	}
+
+	function is_logged() {
+		return strlen($_SESSION['email']) > 0;
+	}
+
+	function get_groups() {
+		$link = connector();
+		$query = 'SELECT name FROM `groups`';
+		$res = mysql_query($query);
+		$array = array();
+		while(($row = mysql_fetch_assoc($res))) {
+    		array_push($array, $row['name']);
+		}
+		return $array;
+	}
+
+	function get_students($group) {
+		$link = connector();
+		$query = "SELECT * FROM `students` WHERE sgroup = '$group'";
+		$res = mysql_query($query);
+		$array = array();
+		while(($row = mysql_fetch_assoc($res))) {
+    		array_push($array, $row);
+		}
+		return $array;
+	}
+
+	function get_my_group() {
+		$link = connector();
+		$email = $_SESSION['email'];
+		$query = "SELECT sgroup FROM `students` WHERE email = '$email'";
+		$res = mysql_query($query);
+		return mysql_fetch_assoc($res)['sgroup'];
+	}
+
+	function get_group_news($group){
+		$link = connector();
+		$query = "SELECT * FROM `group_news` WHERE group_id = '$group'";
+		$res = mysql_query($query);
+		$array = array();
+		while(($row = mysql_fetch_assoc($res))) {
+    		array_push($array, $row);
+		}
+		return $array;
+	}
 ?>

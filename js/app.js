@@ -46,4 +46,15 @@ $(document).ready(function() {
 			});
 		}
 	});
+
+	//logout
+	$('#logout').click(function(){
+		$.ajax.bind(this)({
+				type: 'GET',
+				url: 'handlers/logout.php',
+				success: function(response) {
+					location.reload();
+				}
+			});
+	});
 });
