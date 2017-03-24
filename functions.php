@@ -19,7 +19,7 @@
 	}
 
 	function is_admin() {
-		return $_SESSION['type'] = 'adm'
+		return $_SESSION['type'] == 'adm';
 	}
 
 	function is_moder() {
@@ -49,9 +49,9 @@
 		return $array;
 	}
 
-	function get_students() {
+	function get_students($group) {
 		$link = connector();
-		$query = 'SELECT * FROM `students`';
+		$query = "SELECT * FROM `students` WHERE sgroup = '$group'";
 		$res = mysql_query($query);
 		$array = array();
 		while(($row = mysql_fetch_assoc($res))) {
@@ -62,9 +62,9 @@
 
 	function get_my_group() {
 		$link = connector();
-		$query = 'SELECT * FROM `students`';
+		$email = $_SESSION['email'];
+		$query = "SELECT sgroup FROM `students` WHERE email = '$email'";
 		$res = mysql_query($query);
-		//
-		return true;
+		return $res;
 	}
 ?>
