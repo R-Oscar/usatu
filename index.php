@@ -1,7 +1,10 @@
 <?php 
 	require_once('functions.php');
 	session_start();
+  $slides = get_main_news();
 	include 'partials/header.php';
+  $index = 1;
+  $index_indicators = 0;
 ?>
 
 <div class="carousel fade-carousel slide" data-ride="carousel" data-interval="4000" id="bs-carousel">
@@ -9,46 +12,26 @@
 
   <!-- Indicators -->
   <ol class="carousel-indicators">
-    <li data-target="#bs-carousel" data-slide-to="0" class="active"></li>
-    <li data-target="#bs-carousel" data-slide-to="1"></li>
-    <li data-target="#bs-carousel" data-slide-to="2"></li>
+    <?php foreach($slides as $result) {?>
+    <li data-target="#bs-carousel" data-slide-to="<?php echo $index_indicators; ?>"></li>
+    <?php $index_indicators++;}?>
   </ol>
   
   <!-- Wrapper for slides -->
   <div class="carousel-inner">
-    <div class="item slides active">
+    <?php foreach($slides as $result) {?>
+    <div class="item slides">
   	  <div class="overlay"></div>
-      <div class="slide-1"></div>
+      <div class="slide-<?php echo $index; ?>"></div>
       <div class="hero">
         <hgroup>
-            <h1>Потому что УГАТУ</h1>        
-            <h3>Выпускает хуету</h3>
+            <h1><?php echo $result['title']?></h1>        
+            <h3><?php echo $result['subtitle']?></h3>
         </hgroup>
         <button class="btn btn-hero btn-lg" role="button">See all features</button>
       </div>
     </div>
-    <div class="item slides">
-      <div class="overlay"></div>
-      <div class="slide-2"></div>
-      <div class="hero">        
-        <hgroup>
-            <h1>Потому что УГАТУ</h1>        
-            <h3>Выпускает хуету</h3>
-        </hgroup>       
-        <button class="btn btn-hero btn-lg" role="button">See all features</button>
-      </div>
-    </div>
-    <div class="item slides">
-      <div class="overlay"></div>
-      <div class="slide-3"></div>
-      <div class="hero">        
-        <hgroup>
-            <h1>Потому что УГАТУ</h1>        
-            <h3>Выпускает хуету</h3>
-        </hgroup>
-        <button class="btn btn-hero btn-lg" role="button">See all features</button>
-      </div>
-    </div>
+    <?php $index++;}?>
   </div> 
 </div>
 
@@ -63,3 +46,8 @@
 <?php include 'partials/signup.php'; ?>
 <?php include 'partials/scripts.php'; ?>
 <?php include 'partials/footer.php'; ?>
+
+<script>
+  $('.slides').first().addClass('active');
+  $('.carousel-indicators li').first().addClass('active');
+</script>

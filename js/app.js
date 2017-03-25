@@ -66,23 +66,46 @@ $(document).ready(function() {
 		}
 	});
 
-	$("#js-main-news-submit").submit(function() {
+	$("#js-main-news-form").submit(function() {
 		event.preventDefault();
 		var submitButton = $(this).find(':submit');
+		if (this.id.value >= 0)
+			var url = 'handlers/update_slide.php'
+		else
+			var url = 'handlers/create_slide.php';
 		if (!submitButton.hasClass('disabled')) {
 			$.ajax.bind(this)({
 				type: 'POST',
-				url: 'handlers/create_slide.php',
+				url: url,
 				data: $(this).serialize(),
 				success: function(response) {
 					if (response === '0') {
 						return alert('Ошибка авторизации');
 					}
-					console.log(response);
-					//location.reload();
+					location.reload();
 				}
 			});
 		}
+	});
+
+	// main news edit
+	$(".slider-item button").click(function(e){
+		var parent = e.target.parentElement;
+		var title = $(parent).find('h4')[0].innerText;
+		var subtitle = $(parent).find('h5')[0].innerText;
+		var content = $(parent).find('p')[0].innerText;
+		var id = $(parent).find('span')[0].innerText;
+		$('#news_title').val(title);
+		$('#news_subtitle').val(subtitle);
+		$('#news_content').val(content);
+		$('#news_id').val(id);
+	});
+
+	$('#js-main-news-open').click(function(){
+		$('#news_title').val('');
+		$('#news_subtitle').val('');
+		$('#news_content').val('');
+		$('#news_id').val('-1');
 	});
 
 	//logout

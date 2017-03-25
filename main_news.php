@@ -3,19 +3,22 @@ require_once('functions.php');
 session_start();
 $accessed = is_moder() || is_admin();
 if (!$accessed) exit();
-
+$main_news = get_main_news();
 include 'partials/header.php';
 ?>
 
 <div class="container">
     <div class="row">
         <h2>Слайдер</h2>
+        <?php foreach($main_news as $result) {?>
         <div class="slider-item">
-            <h4>Заголовок</h4>
-            <h5>Подзаголовок</h5>
-            <p>Текст слайдера</p>
-            <button class="btn btn-default">Редактировать</button>
+            <h4><?php echo $result['title']; ?></h4>
+            <h5><?php echo $result['subtitle']; ?></h5>
+            <p><?php echo $result['content']; ?></p>
+            <span class="hidden"><?php echo $result['id']; ?></span>
+            <button class="btn btn-default" data-toggle="modal" data-target="#js-main-news">Редактировать</button>
         </div>
+        <?php }?>
         <button class="btn btn-success" id="js-main-news-open" data-toggle="modal" data-target="#js-main-news">Добавить</button>
     </div>
 </div>
@@ -30,6 +33,7 @@ include 'partials/header.php';
       </div>
       <div class="modal-body">
       	<form data-toggle="validator" role="form" id="js-main-news-form">
+            <input type="text" class="hidden" name="id" id="news_id">
       	  <div class="form-group">
       	    <label for="news_title" class="control-label">Название новости</label>
       	    <input type="text" class="form-control" name="title" id="news_title" placeholder="" data-error="Название введено неверно" required>
