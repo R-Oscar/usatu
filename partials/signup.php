@@ -1,3 +1,8 @@
+<?php 
+require_once('functions.php');
+$groups = get_groups();
+?>
+
 <!-- Авторизация -->
 <div class="modal fade" id="js-auth" tabindex="-1" role="dialog" aria-labelledby="js-auth">
   <div class="modal-dialog modal-sm" role="document">
@@ -94,10 +99,9 @@
       	  <div class="form-group" id="js-signup-sel1" style="display: none;">
       	  	<label for="sel1">Выберите группу</label>
       	  	  <select class="form-control" id="sel1" name="group">
-      	  	    <option value="g1">ПИ-409</option>
-      	  	    <option value="g2">ПИ-409</option>
-      	  	    <option value="g3">ПИ-409</option>
-      	  	    <option value="g4">ПИ-409</option>
+							<?php foreach($groups as $result) {?>
+      	  	    <option value="<?php echo $result['id']; ?>"><?php echo $result['name']; ?></option>
+      	  	  <?php }?>
       	  	  </select>
       	  </div>
       	  <div class="form-group" id="js-signup-sel2" style="display: none;">
