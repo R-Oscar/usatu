@@ -2,7 +2,7 @@ $("#students").click(function(e) {
 	if ($(e.target).hasClass('accept')) {
 		$.ajax({
 			type: 'POST',
-			url: 'handlers/req.php',
+			url: 'adm/handlers/req.php',
 			data: {
 				id: e.target.dataset.id,
 				type: 'accept',
@@ -13,7 +13,7 @@ $("#students").click(function(e) {
 	} else if ($(e.target).hasClass('reject')) {
 		$.ajax({
 			type: 'POST',
-			url: 'handlers/req.php',
+			url: 'adm/handlers/req.php',
 			data: {
 				id: e.target.dataset.id,
 				type: 'reject',
@@ -28,7 +28,7 @@ $("#tutors").click(function(e) {
 	if ($(e.target).hasClass('accept')) {
 		$.ajax({
 			type: 'POST',
-			url: 'handlers/req.php',
+			url: 'adm/handlers/req.php',
 			data: {
 				id: e.target.dataset.id,
 				type: 'accept',
@@ -39,7 +39,7 @@ $("#tutors").click(function(e) {
 	} else if ($(e.target).hasClass('reject')) {
 		$.ajax({
 			type: 'POST',
-			url: 'handlers/req.php',
+			url: 'adm/handlers/req.php',
 			data: {
 				id: e.target.dataset.id,
 				type: 'reject',

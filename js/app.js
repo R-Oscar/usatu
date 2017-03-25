@@ -70,11 +70,12 @@ $(document).ready(function() {
 	$('#logout').click(function(event){
 		event.preventDefault();
 		$.ajax.bind(this)({
-				type: 'GET',
-				url: 'handlers/logout.php',
-				success: function(response) {
-					location.reload();
-				}
-			});
+			type: 'GET',
+			url: 'handlers/logout.php',
+			success: function(response) {
+				location.reload();
+			}
+		});
+		location = '/';
 	});
 });

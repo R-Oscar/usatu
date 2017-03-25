@@ -84,4 +84,13 @@
 		}
 		return $array;
 	}
+
+	function get_group($group_id) {
+		$link = connector();
+		$query = "SELECT name FROM `groups` WHERE id = '$group_id'";
+		$res = mysql_query($query);
+		$array = mysql_fetch_assoc($res);
+		if ($array) return $array['name'];
+		return $array;
+	}
 ?>

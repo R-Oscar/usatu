@@ -36,7 +36,7 @@
 				exit();
 			}
 
-			$query = 'INSERT INTO `students`(`email`, `pwd`, `fname`, `lname`, `patronym`, `access`, `sgroup`) VALUES ("' . $validated['email'] .'", "' . $validated['pwd'] . '", "' . $validated['fname'] . '", "' . $validated['lname'] . '", "' . $validated['patronym'] . '", "0000", "' . $validated['group'] . '")';
+			$query = 'INSERT INTO `students`(`email`, `pwd`, `fname`, `lname`, `patronym`, `access`, `sgroup`) VALUES ("' . $validated['email'] .'", "' . $validated['pwd'] . '", "' . $validated['fname'] . '", "' . $validated['lname'] . '", "' . $validated['patronym'] . '", "std", "' . $validated['group'] . '")';
 
 			if (!mysql_query($query)) {
 				echo 'Ошибка выполнения запроса';
@@ -59,7 +59,7 @@
 				exit();
 			}
 
-			$query = 'INSERT INTO `staff`(`email`, `fname`, `lname`, `patronym`, `pwd`, `access`, `degree`) VALUES ("' . $validated['email'] .'", "' . $validated['fname'] .'", "' . $validated['lname'] .'", "' . $validated['patronym'] .'", "' . $validated['pwd'] .'", "0000", "' . $validated['degree'] .'")';
+			$query = 'INSERT INTO `staff`(`email`, `fname`, `lname`, `patronym`, `pwd`, `access`, `degree`) VALUES ("' . $validated['email'] .'", "' . $validated['fname'] .'", "' . $validated['lname'] .'", "' . $validated['patronym'] .'", "' . $validated['pwd'] .'", "tut", "' . $validated['degree'] .'")';
 
 			if (!mysql_query($query)) {
 				echo 'Ошибка выполнения запроса';

@@ -20,11 +20,14 @@
 				<li class="active"><a href="/">Главная</a></li>
 				<li><a href="#">О кафедре</a></li>
 				<li><a href="#">Расписание</a></li>
-				<li><a href="#">Преподаватели</a></li>
+				<li><a href="tutors.php">Преподаватели</a></li>
 				<li><a href="groups.php">Группы</a></li>
 				<?php
 					if (is_moder() || is_admin()) {
 						echo '<li><a href="req.php">Заявки</a></li>';
+					}
+					if (is_admin()) {
+						echo '<li><a href="admin.php">Админ-панель</a></li>';
 					}
 				?>
 			</ul>
@@ -33,7 +36,7 @@
 						<?php
 							if (is_logged()) {
 								echo '<li><p>Привет!</p></li>';
-								echo '<li><a href="# id="logout">Выйти</a>';
+								echo '<li><a href="#" id="logout">Выйти</a>';
 							} else {
 								echo '<li><a href="#" data-toggle="modal" data-target="#js-auth">Авторизация</a></li>
 									<li><a href="#" data-toggle="modal" data-target="#js-signup">Регистрация</a></li>';
@@ -41,7 +44,4 @@
 						?>
 			</ul>
 		</div>
-<!-- 		<div class="image-container">
-			<img src="images/logo_min.png" alt="Кафедра информатики">
-		</div> -->
 	</nav>
