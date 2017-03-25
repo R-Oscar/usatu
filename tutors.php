@@ -41,7 +41,7 @@
 									<td>'.iconv('utf-8', 'windows-1251', $row['fname']).'</td>
 									<td>'.iconv('utf-8', 'windows-1251', $row['lname']).'</td>
 									<td>'.iconv('utf-8', 'windows-1251', $row['patronym']).'</td>
-									<td>'.iconv('utf-8', 'windows-1251', $row['degree']).'</td>
+									<td>'.iconv('utf-8', 'windows-1251', get_degree_title($row['degree'])).'</td>
 								</tr>';
 						}
 						mysql_close($link);
