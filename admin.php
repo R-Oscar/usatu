@@ -5,6 +5,7 @@
 	include 'partials/header.php';
 
 	$groups = get_groups();
+	$degrees = get_degrees();
 ?>
 
 <div class="container">
@@ -45,14 +46,14 @@
 				   				<td>
 				   					<select>';
 				   						foreach ($groups as $group) {
-				   							echo '<option selected="'.$group['name'] == get_group($row['sgroup']).'">'.iconv('utf-8', 'windows-1251', $group['name']).'</option>';
+				   							echo '<option '.($group['name'] == get_group($row['sgroup']) ? 'selected' : '').' value="'.$group['id'].'">'.iconv('utf-8', 'windows-1251', $group['name']).'</option>';
 				   						}
 				   					echo '</select>
 				   				</td>
 				   				<td>
 				   					<select>
-										<option>Да</option>
-										<option>Нет</option>
+										<option value="1" '.($row['authorized'] == 1 ? 'selected' : '').'>Да</option>
+										<option value="0" '.($row['authorized'] == 0 ? 'selected' : '').'>Нет</option>
 				   					</select>
 				   				</td>
 				   				<td>
@@ -100,8 +101,19 @@
 				   				<td><input type="text" value="'.iconv('utf-8', 'windows-1251', $row['fname']).'" /></td>
 				   				<td><input type="text" value="'.iconv('utf-8', 'windows-1251', $row['lname']).'" /></td>
 				   				<td><input type="text" value="'.iconv('utf-8', 'windows-1251', $row['patronym']).'" /></td>
-				   				<td>'.iconv('utf-8', 'windows-1251', $row['degree']).'</td>
-				   				<td>'. ($row['authorized'] ? "Да" : "Нет") .'</td>
+				   				<td>
+				   					<select>';
+				   						foreach ($degrees as $degree) {
+				   							echo '<option '.($degree['id'] == $row['degree'] ? 'selected' : '').' value="'.$degree['id'].'">'.iconv('utf-8', 'windows-1251', $degree['title']).'</option>';
+				   						}
+				   					echo '</select>
+				   				</td>
+				   				<td>
+				   					<select>
+										<option value="1" '.($row['authorized'] == 1 ? 'selected' : '').'>Да</option>
+										<option value="0" '.($row['authorized'] == 0 ? 'selected' : '').'>Нет</option>
+				   					</select>
+				   				</td>
 				   				<td>
 				   					<button class="accept" data-id="'.iconv('utf-8', 'windows-1251', $row['id']).'">Принять</button>
 				   					<button class="reject" data-id="'.iconv('utf-8', 'windows-1251', $row['id']).'">Удалить</button>
@@ -118,6 +130,7 @@
 </div>
 
 <?php include 'partials/scripts.php'; ?>
+<script src="js/admin.js"></script>
 <script>
 	$('li.active').removeClass('active');
 	$('li:contains("Админ-панель")').addClass('active');
