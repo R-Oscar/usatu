@@ -15,7 +15,6 @@ if ($accessed){
     $group_news = get_group_news(-1);
 }
 $index = 0;
-
 include 'partials/header.php';
 ?>
 
@@ -33,7 +32,7 @@ include 'partials/header.php';
                     <?php foreach($groups as $result) {?>
                         <tr>
                             <td><?php echo $index; ?></td>
-                            <td><?php echo iconv('utf-8', 'windows-1251', $result['name']); ?></td>
+                            <td><?php echo $result['name']; ?></td>
                         </tr>
                         <?php $index++;}?>
                 </tbody>
@@ -50,7 +49,7 @@ include 'partials/header.php';
                     <?php foreach($students as $result) {?>
                         <tr>
                             <td><?php echo $index; ?></td>
-                            <td><?php echo iconv('utf-8', 'windows-1251', $result['fname'] . ' ' . $result['lname']); ?></td>
+                            <td><?php echo $result['fname'] . ' ' . $result['lname']; ?></td>
                         </tr>
                         <?php $index++;}?>
             <?php } ?>
@@ -61,8 +60,10 @@ include 'partials/header.php';
     <?php if (is_student() || $accessed) {?>
         <?php foreach($group_news as $news_item) {?>
             <article class="group-news-item">
-                <h4><?php echo iconv('utf-8', 'windows-1251', $news_item['title']); ?></h4>
-                <p><?php echo iconv('utf-8', 'windows-1251',$news_item['context']); ?></p>
+                <h4><?php echo $news_item['title']; ?></h4>
+                <p><?php echo $news_item['context']; ?></p>
+                <time><?php echo $news_item['date']; ?></time>
+                <small><?php echo $news_item['fname'].' '.$news_item['lname']; ?></small>
             </article>
         <?php } ?>
     <?php } ?>
@@ -82,11 +83,12 @@ include 'partials/header.php';
       </div>
       <div class="modal-body">
       	<form data-toggle="validator" role="form" id="js-news-form">
+          <input type="text" class="hidden" name="author_id" required value="<?php echo $_SESSION['id']; ?>">
             <div class="form-group" id="js-news-group">
       	  	    <label for="group_id">Выберите группу</label>
       	  	    <select class="form-control" id="group_id" name="group_id">
                     <?php foreach($groups as $group) {?>
-      	  	        <option value="<?php echo $group['id']; ?>"><?php echo iconv('utf-8', 'windows-1251',$group['name']); ?></option>
+      	  	        <option value="<?php echo $group['id']; ?>"><?php echo $group['name']; ?></option>
                     <?php } ?>
       	  	    </select>
       	    </div>

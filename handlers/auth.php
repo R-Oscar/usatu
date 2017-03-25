@@ -23,10 +23,10 @@
 	$query = '';
 	switch ($validated['type']) {
 		case 'tutor':
-			$query = "SELECT access, email FROM staff WHERE email = '$email' and pwd = '$pwd' and authorized='1'";
+			$query = "SELECT access, email, id FROM staff WHERE email = '$email' and pwd = '$pwd' and authorized='1'";
 		break;
 		case 'student':
-			$query = "SELECT access, email FROM students WHERE email = '$email' and pwd = '$pwd' and authorized='1'";
+			$query = "SELECT access, email, id FROM students WHERE email = '$email' and pwd = '$pwd' and authorized='1'";
 		break;
 	}
 	$res = mysql_query($query);
@@ -34,6 +34,7 @@
 		session_start();
 		$_SESSION['type'] = $row[0];
 		$_SESSION['email'] = $row[1];
+		$_SESSION['id'] = $row[2];
 		echo '1';
 		exit();
 	}

@@ -84,9 +84,9 @@
 	function get_group_news($group){
 		$link = connector();
 		if ($group == -1){
-			$query = "SELECT * FROM `group_news`";
+			$query = "SELECT group_news.date, group_news.title, group_news.context, staff.fname, staff.lname FROM group_news INNER JOIN staff ON group_news.author_id = staff.id";
 		} else {
-			$query = "SELECT * FROM `group_news` WHERE group_id = '$group'";
+			$query = "SELECT group_news.date, group_news.title, group_news.context, staff.fname, staff.lname FROM group_news INNER JOIN staff ON group_news.author_id = staff.id WHERE group_news.group_id = '$group'";
 		}
 		$res = mysql_query($query);
 		$array = array();

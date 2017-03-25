@@ -204,10 +204,26 @@ body {
     padding: 10px 30px;
     background-color: #f7f7f7;
     border-radius: 10px;
+    margin-top: 10px;
+    margin-right: 10px;
 }
 
 .group-news-item h4{
     font-weight: bold;
     font-size: 20px;
     text-transform: uppercase;
+}
+
+.group-news-item time{
+    float: left;
+    font-size: 11px;
+    line-height: 19px;
+}
+
+.group-news-item small{
+    float: right;
+    font-size: 100%;
+    font-style: italic;
+    min-width: 115px;
+    text-align: right;
 }

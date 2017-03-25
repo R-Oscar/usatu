@@ -19,8 +19,12 @@
 		echo 'Ошибка соединения с БД';
 		exit();
 	}
-
-    $query = 'INSERT INTO `group_news`(`group_id`, `title`, `context`) VALUES ("' . $validated['group_id'] .'", "' . $validated['title'] . '", "' . $validated['context'] . '")';
+	$groupid = $validated['group_id'];
+	$title = $validated['title'];
+	$context = $validated['context'];
+	$auth_id = $validated['author_id'];
+	$d = date('Y-m-d H:i');
+	$query = "INSERT INTO group_news (group_id, title, context, author_id, date) VALUES ('$groupid', ' $title', '$context', '$auth_id', '$d')";
 
 	if (!mysql_query($query)) {
 		echo 'Ошибка выполнения запроса';
