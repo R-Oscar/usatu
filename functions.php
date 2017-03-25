@@ -49,6 +49,17 @@
 		return $array;
 	}
 
+	function get_degrees() {
+		$link = connector();
+		$query = 'SELECT * FROM `degrees`';
+		$res = mysql_query($query);
+		$array = array();
+		while(($row = mysql_fetch_assoc($res))) {
+    		array_push($array, $row);
+		}
+		return $array;
+	}
+
 	function get_students($group) {
 		$link = connector();
 		$query = "SELECT * FROM `students` WHERE sgroup = '$group'";
@@ -91,6 +102,15 @@
 		$res = mysql_query($query);
 		$array = mysql_fetch_assoc($res);
 		if ($array) return $array['name'];
+		return $array;
+	}
+
+	function get_degree_title($degree_id) {
+		$link = connector();
+		$query = "SELECT title FROM `degrees` WHERE id = '$degree_id'";
+		$res = mysql_query($query);
+		$array = mysql_fetch_assoc($res);
+		if ($array) return $array['title'];
 		return $array;
 	}
 ?>

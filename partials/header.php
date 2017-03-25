@@ -38,7 +38,6 @@
 			<ul class="nav navbar-nav navbar-right">
 						<?php
 							if (is_logged()) {
-								echo '<li><p>Привет!</p></li>';
 								echo '<li><a href="#" id="logout">Выйти</a>';
 							} else {
 								echo '<li><a href="#" data-toggle="modal" data-target="#js-auth">Авторизация</a></li>
