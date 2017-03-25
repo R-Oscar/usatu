@@ -108,6 +108,47 @@ $(document).ready(function() {
 		$('#news_id').val('-1');
 	});
 
+
+	// news edit
+
+	$("#js-index-news-form").submit(function() {
+		event.preventDefault();
+		var submitButton = $(this).find(':submit');
+		if (this.id.value >= 0)
+			var url = 'handlers/update_index_news.php'
+		else
+			var url = 'handlers/create_index_news.php';
+		if (!submitButton.hasClass('disabled')) {
+			$.ajax.bind(this)({
+				type: 'POST',
+				url: url,
+				data: $(this).serialize(),
+				success: function(response) {
+					if (response === '0') {
+						return alert('Ошибка авторизации');
+					}
+					location.reload();
+				}
+			});
+		}
+	});
+
+	$(".news-item button").click(function(e){
+		var parent = e.target.parentElement;
+		var brief = $(parent).find('h4')[0].innerText;
+		var content = $(parent).find('p')[0].innerText;
+		var id = $(parent).find('span')[0].innerText;
+		$('#news_index_brief').val(brief);
+		$('#news_index_content').val(content);
+		$('#news_index_id').val(id);
+	});
+
+	$('#js-index-news-open').click(function(){
+		$('#news_index_brief').val('');
+		$('#news_index_content').val('');
+		$('#news_index_id').val('-1');
+	});
+
 	//logout
 	$('#logout').click(function(event){
 		event.preventDefault();

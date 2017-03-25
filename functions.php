@@ -124,4 +124,15 @@
 		}
 		return $array;
 	}
+
+	function get_simple_news(){
+		$link = connector();
+		$query = "SELECT * FROM `news`";
+		$res = mysql_query($query);
+		$array = array();
+		while(($row = mysql_fetch_assoc($res))) {
+    		array_push($array, $row);
+		}
+		return $array;
+	}
 ?>

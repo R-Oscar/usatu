@@ -2,6 +2,7 @@
 	require_once('functions.php');
 	session_start();
   $slides = get_main_news();
+  $news = get_simple_news();
 	include 'partials/header.php';
   $index = 1;
   $index_indicators = 0;
@@ -37,9 +38,14 @@
 
 <div class="container-fluid news">
 	<div class="container">
-		<div class="col-xs-4">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellat impedit nobis, beatae amet quas ad. Repudiandae nemo laborum cupiditate repellendus temporibus ullam ipsam, impedit, officiis atque suscipit dolore dolores labore! <a href="#">Читать дальше</a></div>
-		<div class="col-xs-4">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellat impedit nobis, beatae amet quas ad. Repudiandae nemo laborum cupiditate repellendus temporibus ullam ipsam, impedit, officiis atque suscipit dolore dolores labore! <a href="#">Читать дальше</a></div>
-		<div class="col-xs-4">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellat impedit nobis, beatae amet quas ad. Repudiandae nemo laborum cupiditate repellendus temporibus ullam ipsam, impedit, officiis atque suscipit dolore dolores labore! <a href="#">Читать дальше</a></div>
+    <?php foreach($news as $result) {?>
+		<div class="col-xs-4">
+      <div class="news-view">
+        <h5><?php echo $result['brief']; ?></h5>
+        <p><?php echo $result['content']; ?></p>
+      </div>
+      </div>
+    <?php }?>
 	</div>
 </div>
 
