@@ -66,6 +66,25 @@ $(document).ready(function() {
 		}
 	});
 
+	$("#js-main-news-submit").submit(function() {
+		event.preventDefault();
+		var submitButton = $(this).find(':submit');
+		if (!submitButton.hasClass('disabled')) {
+			$.ajax.bind(this)({
+				type: 'POST',
+				url: 'handlers/create_slide.php',
+				data: $(this).serialize(),
+				success: function(response) {
+					if (response === '0') {
+						return alert('Ошибка авторизации');
+					}
+					console.log(response);
+					//location.reload();
+				}
+			});
+		}
+	});
+
 	//logout
 	$('#logout').click(function(event){
 		event.preventDefault();

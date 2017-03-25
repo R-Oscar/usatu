@@ -68,7 +68,7 @@ include 'partials/header.php';
         <?php } ?>
     <?php } ?>
     <?php if ($accessed) {?>
-        <a href="#" id="#create-news" data-toggle="modal" data-target="#js-news">Создать объявление</a>
+        <a href="#" id="create-news" data-toggle="modal" data-target="#js-news">Создать объявление</a>
     <?php } ?>
     </div>
 </div>
