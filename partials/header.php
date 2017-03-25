@@ -29,6 +29,9 @@
 					if (is_admin()) {
 						echo '<li><a href="admin.php">Админ-панель</a></li>';
 					}
+					if (is_moder()) {
+						echo '<li><a href="main_news.php">Редактор новостей</a></li>';
+					}
 				?>
 			</ul>
 
