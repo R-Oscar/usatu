@@ -22,8 +22,9 @@
 	$title = $validated['title'];
 	$subtitle = $validated['subtitle'];
 	$content = $validated['content'];
+    $id = $validated['id'];
+    $query = "UPDATE news_main SET title='$title', subtitle='$subtitle', content='$content' where id ='$id'";
 
-	$query = "INSERT INTO news_main (title, subtitle, content) VALUES ('$title', ' $subtitle', '$content')";
 	if (!mysql_query($query)) {
 		echo 'Ошибка выполнения запроса';
 		exit();

@@ -19,11 +19,11 @@
 		echo 'Ошибка соединения с БД';
 		exit();
 	}
-	$title = $validated['title'];
-	$subtitle = $validated['subtitle'];
+	$brief = $validated['brief'];
 	$content = $validated['content'];
 
-	$query = "INSERT INTO news_main (title, subtitle, content) VALUES ('$title', ' $subtitle', '$content')";
+	$query = "INSERT INTO news (brief, content) VALUES ('$brief', '$content')";
+
 	if (!mysql_query($query)) {
 		echo 'Ошибка выполнения запроса';
 		exit();
